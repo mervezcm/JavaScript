@@ -1,34 +1,54 @@
-console.log("Hello JavaScript Learners");
+// no access modifier, no method overloading
+function add(a,b) {  // parameters of function
+    console.log("Total is : "+(a+b));  // NO return type
+}
 
-// Single comment line
+add(10,20); // call a function -- argument we are passing
+
+// return type functions
+function multiply(a,b) { 
+    return (a*b);
+}
+
+console.log(multiply(10,20));
+
+// no overloading
+add(10,20,30,200); // ignores after the second parameter
+
 /**
- * Multiple comment line
+ * 
+ * @param {*} a 
+ * @param {*} b 
+ * @returns 
+ * They call functions as first class citizens of Javascript
+ *  1. you can pass a function as an argument to other functions
+ * 2. you can return a function from a function
+ * 3 . you can store a function into a varible
  */
+let divide = function (a,b) {  // you can pass arguments to other functions
+    return a/b;  // you can return a function from a function
+}
 
-// decalaring variables
-/**
- * JS is dynamic typing languge
- */
+console.log(divide(30,5));
 
-let a;
-console.log(typeof a);
-a = 5;  // infers that a is number
-console.log(typeof a);
-a = 'BootCamp'; // infers that a is String
-console.log(typeof a);
-a = true;// infers that a is boolean
-console.log(typeof a);
+let anyFunction = divide;
+
+console.log(anyFunction(30,5));
+
+// pass a function as an argument to other functions
+
+function sum(a,b) {
+    return a+b;
+}
+
+function average(a,b,fn) {
+    return fn(a,b)/2;
+}
+
+let aveResult = average(10,20,sum);
+console.log(aveResult);
+
+aveResult = average(10,20,multiply);
+console.log(aveResult);
 
 
-let x = 5, y = 'Oscar';
-console.log(x+y); // concatination : 5Oscar
-console.log(x*y); // NaN
-
-// Naming Rules : same with JAVA naming rules
-
-// constant variables
-
-const number = 35;
-// TypeError: Assignment to constant variable.
-// number = 45; 
-console.log(number);
